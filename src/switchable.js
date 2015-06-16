@@ -16,6 +16,7 @@
 
 var $ = require('jquery');
 var Widget = require('nd-widget');
+var Template = require('nd-template');
 
 var Effects = require('./plugins/effects');
 var Autoplay = require('./plugins/autoplay');
@@ -57,21 +58,27 @@ function constClass(classPrefix) {
 }
 
 var Switchable = Widget.extend({
+
+  Implements: Template,
+
   attrs: {
+
+    template: '',
+    model: null,
 
     // 用户传入的 triggers 和 panels
     // 可以是 Selector、jQuery 对象、或 DOM 元素集
     triggers: {
       value: [],
       getter: function (val) {
-        return $(val);
+        return this.$(val);
       }
     },
 
     panels: {
       value: [],
       getter: function (val) {
-        return $(val);
+        return this.$(val);
       }
     },
 
@@ -80,7 +87,7 @@ var Switchable = Widget.extend({
     // 是否包含 triggers，用于没有传入 triggers 时，是否自动生成的判断标准
     hasTriggers: true,
     // 触发类型
-    triggerType: 'hover',
+    triggerType: 'click',
     // or 'click'
     // 触发延迟
     delay: 100,
