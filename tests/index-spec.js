@@ -4,14 +4,13 @@ var $ = require('jquery');
 var sinon = require('sinon');
 var expect = require('expect.js');
 var Switchable = require('../index');
-var Carousel = Switchable.Carousel;
-var Slide = Switchable.Slide;
-var Accordion = Switchable.Accordion;
-var expect = require('expect.js');
+var Carousel = require('../lib/carousel');
+var Slide = require('../lib/slide');
+var Accordion = require('../lib/accordion');
 
 /*globals describe,it,beforeEach,afterEach*/
 
-describe('Switchable', function () {
+describe('Switchable', function() {
 
   var element1, element2, element3;
   $(document.body).css('margin', 0);
@@ -34,7 +33,7 @@ describe('Switchable', function () {
     }
   }
 
-  beforeEach(function () {
+  beforeEach(function() {
     // 测试元素1
     var elem = [];
     elem.push('<div id="demo1">');
@@ -76,13 +75,13 @@ describe('Switchable', function () {
 
   });
 
-  afterEach(function () {
+  afterEach(function() {
     element1.remove();
     element2.remove();
     element3.remove();
   });
 
-  it('Switchable初始化', function () {
+  it('Switchable初始化', function() {
     var switchable = new Switchable({
       element: '#demo1'
     });
@@ -95,7 +94,7 @@ describe('Switchable', function () {
     expect($('.' + contentClass).attr('class')).to.contain(contentClass);
   });
 
-  it('panels和triggers传入', function () {
+  it('panels和triggers传入', function() {
     var switchable = new Switchable({
       element: '#demo2',
       triggers: $('#demo2 li'),
@@ -107,7 +106,7 @@ describe('Switchable', function () {
     expect(switchable.get('panels').length).to.be(3);
   });
 
-  it('Switchable 属性配置', function () {
+  it('Switchable 属性配置', function() {
     var switchable = new Switchable({
       element: '#demo1',
       triggerType: 'click',
@@ -117,7 +116,7 @@ describe('Switchable', function () {
     expect(switchable.get('activeIndex')).to.be(1);
   });
 
-  it('triggers自动初始化', function () {
+  it('triggers自动初始化', function() {
     var switchable = new Switchable({
       element: '#demo3',
       navClass: 'ui-switchable-nav'
@@ -128,7 +127,7 @@ describe('Switchable', function () {
     expect($(switchable.get('triggers')[1]).html()).to.be('2');
   });
 
-  it('触发默认位置', function () {
+  it('触发默认位置', function() {
     var sw = new Switchable({
       element: '#demo1',
       activeIndex: 1
@@ -136,7 +135,7 @@ describe('Switchable', function () {
     testTriggerAndPanelActive(sw, 1);
   });
 
-  it('switchTo', function () {
+  it('switchTo', function() {
     var sw = new Switchable({
       element: '#demo1'
     });
@@ -156,7 +155,7 @@ describe('Switchable', function () {
      **/
   });
 
-  it('triggerType click', function () {
+  it('triggerType click', function() {
     var sw = new Switchable({
       element: '#demo1'
     });
@@ -174,7 +173,7 @@ describe('Switchable', function () {
     testTriggerAndPanelActive(sw, 2);
   });
 
-  it('triggerType hover', function () {
+  it('triggerType hover', function() {
     var sw = new Switchable({
       element: '#demo1',
       triggerType: 'hover'
@@ -202,7 +201,7 @@ describe('Switchable', function () {
     clock.restore();
   });
 
-  it('activeIndex事件监听', function () {
+  it('activeIndex事件监听', function() {
     var sw = new Switchable({
       element: '#demo1'
     });
@@ -210,7 +209,7 @@ describe('Switchable', function () {
     testTriggerAndPanelActive(sw, 2);
   });
 
-  it('prev next', function () {
+  it('prev next', function() {
     var sw = new Switchable({
       element: '#demo1'
     });
@@ -234,7 +233,7 @@ describe('Switchable', function () {
 
   });
 
-  it('Carousel', function () {
+  it('Carousel', function() {
     var cc = new Carousel({
       element: '#demo1'
     });
@@ -248,7 +247,7 @@ describe('Switchable', function () {
     testTriggerAndPanelActive(cc, 2);
   });
 
-  it('Carousel disabled', function () {
+  it('Carousel disabled', function() {
     var cc2 = new Carousel({
       element: '#demo1',
       circular: false,
@@ -261,21 +260,20 @@ describe('Switchable', function () {
     to.contain(disabelClass);
 
     cc2.switchTo(2);
-    expect($(cc2.get('nextBtn')).
-    attr('class')).to.contain(disabelClass);
+    expect($(cc2.get('nextBtn')).attr('class')).to.contain(disabelClass);
 
     cc2.get('prevBtn').click();
     cc2.get('nextBtn').click();
 
   });
 
-  it('Slide', function () {
+  it('Slide', function() {
     new Slide({
       element: '#demo1'
     });
   });
 
-  it('Accordion', function () {
+  it('Accordion', function() {
     var ac = new Accordion({
       element: '#demo1'
     });
@@ -283,7 +281,7 @@ describe('Switchable', function () {
     expect(ac.get('triggerType')).to.equal('click');
   });
 
-  it('插件安装 一', function () {
+  it('插件安装 一', function() {
     var sw = new Switchable({
       element: '#demo1'
     });
@@ -310,7 +308,7 @@ describe('Switchable', function () {
     expect(sw2._plugins.length).to.be(1);
   });
 
-  it('插件安装 二', function () {
+  it('插件安装 二', function() {
     var sw = new Switchable({
       element: '#demo1',
       autoplay: true,
@@ -320,7 +318,7 @@ describe('Switchable', function () {
   });
 
 
-  it('destroy', function () {
+  it('destroy', function() {
 
     var sw = new Switchable({
       element: '#demo1',
