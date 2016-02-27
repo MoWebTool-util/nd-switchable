@@ -1,6 +1,6 @@
 'use strict';
 
-var $ = require('jquery');
+var $ = require('nd-jquery');
 var sinon = require('sinon');
 var expect = require('expect.js');
 var Switchable = require('../index');

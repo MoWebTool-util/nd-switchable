@@ -1,7 +1,7 @@
 {
   "name": "nd-switchable",
-  "version": "3.0.0",
-  "description": "Switchable提供了切换的基本操作，并通过参数配置实现了自动播放，循环，切换等操作，并提供不同的特点封装成了Tabs，Slide，Carousel，Accordion模块。用户可以根据自己的需求引用不同的模块。",
+  "version": "3.0.1",
+  "description": "Switchable 提供了切换的基本操作，并通过参数配置实现了自动播放，循环，切换等操作，并提供不同的特点封装成了 Tabs，Slide，Carousel，Accordion 模块。用户可以根据自己的需求引用不同的模块。",
   "keywords": [],
   "homepage": "https://github.com/ndfront/nd-switchable",
   "author": {
@@ -22,10 +22,10 @@
   "licenses": "MIT",
   "main": "index.js",
   "dependencies": {
-    "jquery": "^1.11.1",
-    "nd-widget": "^3.0.0",
-    "nd-template": "^3.0.0",
-    "nd-easing": "^3.0.0"
+    "nd-easing": "^3.0.0",
+    "nd-jquery": "^2.2.1",
+    "nd-template": "^3.0.1",
+    "nd-widget": "^3.0.1"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
